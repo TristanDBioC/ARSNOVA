@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ARSNOVA">
         <activity
+            android:name=".SignupActivity"
+            android:exported="true" />
+        <activity
             android:name=".SignInActivity"
             android:exported="true" />
         <activity

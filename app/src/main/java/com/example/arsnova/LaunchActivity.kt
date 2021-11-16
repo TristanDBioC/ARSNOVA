@@ -18,4 +18,9 @@ class LaunchActivity : AppCompatActivity() {
 
     }
 
+    fun buttonSingupclick(view: View) {
+        val intent = Intent(this, SignupActivity::class.java)
+        startActivity(intent)
+    }
+
 }

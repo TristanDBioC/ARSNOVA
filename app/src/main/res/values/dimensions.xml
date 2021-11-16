@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- For InpuTextLayouts -->
+    <dimen name="editTextHeight">50dp</dimen>
+    <dimen name="editTextWidth">290dp</dimen>
+
+    <!-- For those background white rectangles -->
+    <dimen name="View_whiteRectangle">346dp</dimen>
+
+    <!-- Wide buttons (sign in, sign up) -->
+    <dimen name="WideButtonHeight">46dp</dimen>
+    <dimen name="WideButtonWidth">290dp</dimen>
+</resources>

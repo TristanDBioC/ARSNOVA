@@ -52,6 +52,7 @@
         android:id="@+id/buttonSignup"
         android:layout_width="249dp"
         android:layout_height="55dp"
+        android:onClick="buttonSingupclick"
         android:text="Sign up"
         android:textColor="@color/teal_500"
         android:textColorHighlight="@color/teal_700"
