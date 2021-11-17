@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/teal_500"
+
     tools:context=".SignupActivity">
 
     <TextView
@@ -50,6 +51,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/rectangle_grey"
+            android:focusedByDefault="true"
             android:hint="Email"
             android:inputType="textEmailAddress" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -58,6 +60,7 @@
         android:id="@+id/textInputLayout4"
         android:layout_width="@dimen/editTextWidth"
         android:layout_height="@dimen/editTextHeight"
+        app:errorEnabled="true"
         app:layout_constraintBottom_toBottomOf="@+id/view2"
         app:layout_constraintEnd_toEndOf="@+id/view2"
         app:layout_constraintHorizontal_bias="0.517"
@@ -85,8 +88,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/textInputLayout4"
         app:layout_constraintTop_toTopOf="@+id/view2"
-        app:layout_constraintVertical_bias="0.578"
-        app:passwordToggleEnabled="true">
+        app:layout_constraintVertical_bias="0.578">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/editTextConfPass"
@@ -99,10 +101,11 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/buttonRegister"
         android:layout_width="0dp"
         android:layout_height="53dp"
-        android:text="Button"
+        android:onClick="buttonRegisteronClick"
+        android:text="Register"
         app:layout_constraintBottom_toBottomOf="@+id/view2"
         app:layout_constraintEnd_toEndOf="@+id/textInputLayout2"
         app:layout_constraintHorizontal_bias="0.0"
