@@ -103,4 +103,9 @@ class SignupActivity : AppCompatActivity() {
 
     }
 
+    fun buttonRegisterSkip(view: View) {
+        val intent = Intent(this, CreateProfileActivity::class.java)
+        startActivity(intent)
+    }
+
 }

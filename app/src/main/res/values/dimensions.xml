@@ -11,4 +11,7 @@
     <!-- Wide buttons (sign in, sign up) -->
     <dimen name="WideButtonHeight">46dp</dimen>
     <dimen name="WideButtonWidth">290dp</dimen>
+
+    <!-- Titles -->
+    <dimen name="TitleFontSize">34sp</dimen>
 </resources>
