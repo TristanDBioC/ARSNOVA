@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Collection Names-->
+    <string name="collection_courses">course</string>
+    <string name="collection_yearLevel">year_level</string>
+    <string name="collection_users">user</string>
+
+    <!-- COURSES COLLECTION -->
+    <string name="course_name">name</string>
+    <string name="course_fullName">fullname</string>
+    <string name="course_enrollCount">enroll_count</string>
+    
+    <!-- YEAR LEVEL COLLECTION -->
+    <string name="yearLevel_name">name</string>
+    <string name="yearLevel_abbreviation">roman_abbr</string>
+
+    
+    <!-- USERS COLLECTION-->
+    <string name="userid">id</string>
+    <string name="user_username">username</string>
+    <string name="user_password">password</string>
+    <string name="user_firstname">fname</string>
+    <string name="user_mi">mi</string>
+    <string name="user_lastname">lname</string>
+    <string name="user_email">email</string>
+    <string name="user_dept">dept</string>
+    <string name="user_summary">summary</string>
+    <string name="user_fines">fines</string>
+    <string name="user_incentives">incentives</string>
+    <string name="user_netpayable">netpayable</string>
+    <string name="user_type">type</string>
+    <string name="user_position">position</string>
+
+
+</resources>

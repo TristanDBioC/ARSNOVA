@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "741143261047",
+    "project_id": "ccs6-b084d",
+    "storage_bucket": "ccs6-b084d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:741143261047:android:e257cc5fa3afecc10c7b72",
+        "android_client_info": {
+          "package_name": "com.example.arsnova"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "741143261047-bknv40eqcghit7vo6eluge1mqq96haie.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD5GFs-oUm4hWW1iwfV5LCqpub5ous3S78"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "741143261047-bknv40eqcghit7vo6eluge1mqq96haie.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
