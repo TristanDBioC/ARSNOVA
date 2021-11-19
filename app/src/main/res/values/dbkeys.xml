@@ -3,6 +3,7 @@
     <!-- Collection Names-->
     <string name="collection_courses">course</string>
     <string name="collection_yearLevel">year_level</string>
+    <string name="collection_users">user</string>
 
     <!-- COURSES COLLECTION -->
     <string name="course_name">name</string>

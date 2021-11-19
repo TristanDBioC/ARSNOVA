@@ -2,19 +2,30 @@ package com.example.arsnova
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.ArrayAdapter
+import android.widget.EditText
+import android.widget.RelativeLayout
 import android.widget.Spinner
 import com.google.common.collect.Iterables
 import com.google.common.collect.Iterables.toArray
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
 class CreateProfileActivity : AppCompatActivity() {
+    private lateinit var user : FirebaseUser
+    private lateinit var auth : FirebaseAuth
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_profile)
+        auth = Firebase.auth
+        user = auth.currentUser!!
 
         populateSpinners()
+        findViewById<EditText>(R.id.editTextemail).setText(user.email)
 
 
     }
@@ -24,10 +35,10 @@ class CreateProfileActivity : AppCompatActivity() {
         var courses = arrayListOf<String>()
         var yearLevels = arrayListOf<String>()
 
-        db.collection("course").get()
+        db.collection(getString(R.string.collection_courses)).get()
             .addOnSuccessListener { result ->
                 for (document in result) {
-                   courses.add(document.data.getValue("name").toString())
+                   courses.add(document.data.getValue(getString(R.string.course_name)).toString())
 
                 }
             }
@@ -38,11 +49,12 @@ class CreateProfileActivity : AppCompatActivity() {
                 coureArrayAdapter.notifyDataSetChanged()
 
                 findViewById<Spinner>(R.id.spinnerCourse).adapter = coureArrayAdapter
+                findViewById<RelativeLayout>(R.id.loadingPanel).visibility = View.GONE
             }
-        db.collection("year_level").get()
+        db.collection(getString(R.string.collection_yearLevel)).get()
             .addOnSuccessListener { result ->
                 for (document in result) {
-                    yearLevels.add(document.data.getValue("roman_abbr").toString())
+                    yearLevels.add(document.data.getValue(getString(R.string.yearLevel_abbreviation)).toString())
 
                 }
             }

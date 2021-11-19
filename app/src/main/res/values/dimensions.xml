@@ -14,4 +14,7 @@
 
     <!-- Titles -->
     <dimen name="TitleFontSize">34sp</dimen>
+
+    <!-- Other Values -->
+    <integer name="passowrdlength">8</integer>
 </resources>
