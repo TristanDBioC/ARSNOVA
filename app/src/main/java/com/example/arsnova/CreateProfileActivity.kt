@@ -1,5 +1,6 @@
 package com.example.arsnova
 
+import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -16,6 +17,7 @@ class CreateProfileActivity : AppCompatActivity() {
     private lateinit var user : FirebaseUser
     private lateinit var auth : FirebaseAuth
     private val db = Firebase.firestore
+
     private val getContent = registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
         if (uri != null) {
             findViewById<ImageView>(R.id.imageProfilePic).setImageURI(uri)
@@ -35,8 +37,6 @@ class CreateProfileActivity : AppCompatActivity() {
         profilePic.setOnClickListener() {
             getContent.launch("image/*")
         }
-
-
     }
 
     private fun populateSpinners() {
@@ -122,5 +122,4 @@ class CreateProfileActivity : AppCompatActivity() {
 
         return thereIsError
     }
-
 }

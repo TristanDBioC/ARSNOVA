@@ -60,34 +60,27 @@ class SignInActivity : AppCompatActivity() {
     }
 
 
-    // Checks if the user has a profile record in the firestore database and retrieves it
-    fun userHasData(user: FirebaseUser) : Boolean{
-        var db = Firebase.firestore
-        var hasData: Boolean = false
-        db.collection(getString(R.string.collection_users)).document(user.uid).get()
-            .addOnSuccessListener { document ->
-                hasData = document.exists()
-            }
-        return hasData
-    }
 
     fun signInButtonOnClick(view: View) {
         findViewById<RelativeLayout>(R.id.loadingPanel).visibility = View.VISIBLE
         val email = findViewById<EditText>(R.id.editTextEmail).text.toString()
         val password = findViewById<EditText>(R.id.editTextPassword).text.toString()
+        lateinit var intent : Intent
 
         auth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     val user = auth.currentUser!!
-                    println(user.uid)
-                    if (userHasData(user)) {
-                        // Proceed to homepage activity
-                    } else {
-                        Toast.makeText(this, "No user profile found", Toast.LENGTH_SHORT).show()
-                        val intent = Intent(this, CreateProfileActivity::class.java)
-                        startActivity(intent)
-                    }
+                    val db = Firebase.firestore
+                    db.collection(getString(R.string.collection_users)).document(user.uid).get()
+                        .addOnSuccessListener { document ->
+                            if (document.exists()) {
+                                Toast.makeText(this, "Proceed to homepage", Toast.LENGTH_SHORT).show()
+                            } else {
+                                intent = Intent(this, CreateProfileActivity::class.java)
+                            }
+                            startActivity(intent)
+                        }
                 } else {
                     Toast.makeText(this, "Login authentication failed", Toast.LENGTH_SHORT).show()
                 }
