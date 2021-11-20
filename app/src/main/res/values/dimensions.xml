@@ -9,7 +9,7 @@
     <dimen name="View_whiteRectangle">346dp</dimen>
 
     <!-- Wide buttons (sign in, sign up) -->
-    <dimen name="WideButtonHeight">46dp</dimen>
+    <dimen name="WideButtonHeight">50dp</dimen>
     <dimen name="WideButtonWidth">290dp</dimen>
 
     <!-- Titles -->

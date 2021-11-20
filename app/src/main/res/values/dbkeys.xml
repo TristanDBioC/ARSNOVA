@@ -16,18 +16,17 @@
 
     
     <!-- USERS COLLECTION-->
-    <string name="userid">id</string>
-    <string name="user_username">username</string>
-    <string name="user_password">password</string>
+    <string name="user_id">id</string>
     <string name="user_firstname">fname</string>
     <string name="user_mi">mi</string>
     <string name="user_lastname">lname</string>
     <string name="user_email">email</string>
-    <string name="user_dept">dept</string>
-    <string name="user_summary">summary</string>
+    <string name="user_dept">course</string>
+    <string name="user_yearLevel">year_level</string>
+    <string name="user_bio">bio</string>
+    <string name="user_summary">clearance_status</string>
     <string name="user_fines">fines</string>
     <string name="user_incentives">incentives</string>
-    <string name="user_netpayable">netpayable</string>
     <string name="user_type">type</string>
     <string name="user_position">position</string>
 
