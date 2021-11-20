@@ -1,6 +1,7 @@
 package com.example.arsnova
 
 import android.content.Intent
+import android.media.Image
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -12,23 +13,27 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.ktx.storage
 
 class CreateProfileActivity : AppCompatActivity() {
-    private lateinit var user : FirebaseUser
-    private lateinit var auth : FirebaseAuth
+    private val auth = Firebase.auth
+    private val user = auth.currentUser!!
     private val db = Firebase.firestore
+    private var imageProfileURI: Uri? = null
+    private var FirestoreUploadIsFinished = false
+    private var CloudUploadIsFinished = false
 
     private val getContent = registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
         if (uri != null) {
             findViewById<ImageView>(R.id.imageProfilePic).setImageURI(uri)
+            imageProfileURI = uri
         }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_profile)
-        auth = Firebase.auth
-        user = auth.currentUser!!
+
 
         populateSpinners()
         findViewById<EditText>(R.id.editTextProfileEmail).setText(user.email)
@@ -79,9 +84,25 @@ class CreateProfileActivity : AppCompatActivity() {
 
     fun buttonFinished(view: View) {
         if (!checkField()) {
+            triggerLoading()
             addFirestoreUser()
+            uploadImageToCloud(imageProfileURI)
+        }
+
+    }
+
+    private fun triggerLoading() {
+        findViewById<Button>(R.id.buttonFinishedSetup).isEnabled = false
+        findViewById<RelativeLayout>(R.id.loadingPanel).visibility = View.VISIBLE
+    }
+
+    private fun finishLoading() {
+        if (FirestoreUploadIsFinished and CloudUploadIsFinished) {
+            findViewById<Button>(R.id.buttonFinishedSetup).isEnabled = true
+            findViewById<RelativeLayout>(R.id.loadingPanel).visibility = View.GONE
         }
     }
+
 
     private fun addFirestoreUser() {
         val newUser = hashMapOf(
@@ -100,6 +121,10 @@ class CreateProfileActivity : AppCompatActivity() {
         db.collection(getString(R.string.collection_users)).document(user.uid).set(newUser)
             .addOnSuccessListener { Toast.makeText(this, "Profile successfully created", Toast.LENGTH_LONG).show() }
             .addOnFailureListener {Toast.makeText(this, "Failed", Toast.LENGTH_SHORT).show()}
+            .addOnCompleteListener {
+                FirestoreUploadIsFinished = true
+                finishLoading()
+            }
 
     }
 
@@ -122,4 +147,25 @@ class CreateProfileActivity : AppCompatActivity() {
 
         return thereIsError
     }
+
+    private fun uploadImageToCloud(uri: Uri?) {
+        if (uri != null) {
+            val storage = Firebase.storage
+            val storageRef = storage.reference
+            val fileref = storageRef.child("images/${user.uid}")
+            fileref.putFile(uri)
+                .addOnFailureListener {
+                    Toast.makeText(this, "file not uploaded", Toast.LENGTH_SHORT).show()
+                }
+                .addOnSuccessListener {
+                    Toast.makeText(this, "file uploaded", Toast.LENGTH_SHORT).show()
+                }
+                .addOnCompleteListener {
+                    CloudUploadIsFinished = true
+                    finishLoading()
+                }
+        }
+
+    }
+
 }

@@ -16,10 +16,12 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.ktx.storage
 
 
 class SignInActivity : AppCompatActivity() {
     private lateinit var auth : FirebaseAuth
+    private val storage = Firebase.storage
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,19 +49,6 @@ class SignInActivity : AppCompatActivity() {
             })
 
     }
-
-
-    override fun onStart() {
-        super.onStart()
-        val currentUser = auth.currentUser
-        if (currentUser == null) {
-            println("no user logged in")
-        } else {
-            println(currentUser.uid)
-        }
-    }
-
-
 
     fun signInButtonOnClick(view: View) {
         findViewById<RelativeLayout>(R.id.loadingPanel).visibility = View.VISIBLE
