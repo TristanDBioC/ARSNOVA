@@ -21,7 +21,6 @@ import com.google.firebase.storage.ktx.storage
 
 class SignInActivity : AppCompatActivity() {
     private lateinit var auth : FirebaseAuth
-    private val storage = Firebase.storage
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -75,6 +74,11 @@ class SignInActivity : AppCompatActivity() {
                 }
                 findViewById<RelativeLayout>(R.id.loadingPanel).visibility = View.GONE
             }
+    }
+
+    fun forgetPasswordCLick(view: View) {
+        val intent = Intent(this, Resetpassword::class.java)
+        startActivity(intent)
     }
 
 }
