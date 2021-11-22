@@ -105,7 +105,7 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout7"
         android:layout_width="0dp"
-        android:layout_height="51dp"
+        android:layout_height="@dimen/editTextHeight"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
@@ -234,9 +234,8 @@
 
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/ic_edit_pen"
+        android:layout_width="34dp"
+        android:layout_height="34dp"
         app:layout_constraintBottom_toBottomOf="@+id/imageProfilePic"
         app:layout_constraintEnd_toEndOf="@+id/imageProfilePic"
         app:layout_constraintHorizontal_bias="1.0"

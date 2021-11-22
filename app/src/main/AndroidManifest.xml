@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ARSNOVA">
         <activity
+            android:name=".HomepageActivity"
+            android:exported="true" />
+        <activity
             android:name=".Resetpassword"
             android:exported="true" />
         <activity

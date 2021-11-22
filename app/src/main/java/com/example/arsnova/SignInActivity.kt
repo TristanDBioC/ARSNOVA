@@ -50,6 +50,7 @@ class SignInActivity : AppCompatActivity() {
     }
 
     fun signInButtonOnClick(view: View) {
+        findViewById<Button>(R.id.buttonSignin).isEnabled = false
         findViewById<RelativeLayout>(R.id.loadingPanel).visibility = View.VISIBLE
         val email = findViewById<EditText>(R.id.editTextEmail).text.toString()
         val password = findViewById<EditText>(R.id.editTextPassword).text.toString()
@@ -67,6 +68,7 @@ class SignInActivity : AppCompatActivity() {
                             } else {
                                 intent = Intent(this, CreateProfileActivity::class.java)
                             }
+                            findViewById<Button>(R.id.buttonSignin).isEnabled = true
                             startActivity(intent)
                         }
                 } else {

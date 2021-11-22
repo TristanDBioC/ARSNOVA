@@ -93,6 +93,7 @@ class CreateProfileActivity : AppCompatActivity() {
 
     private fun triggerLoading() {
         findViewById<Button>(R.id.buttonFinishedSetup).isEnabled = false
+        findViewById<Button>(R.id.buttonFinishedSetup).isEnabled = false
         findViewById<RelativeLayout>(R.id.loadingPanel).visibility = View.VISIBLE
     }
 
@@ -100,6 +101,7 @@ class CreateProfileActivity : AppCompatActivity() {
         if (FirestoreUploadIsFinished and CloudUploadIsFinished) {
             findViewById<Button>(R.id.buttonFinishedSetup).isEnabled = true
             findViewById<RelativeLayout>(R.id.loadingPanel).visibility = View.GONE
+            findViewById<Button>(R.id.buttonFinishedSetup).isEnabled = true
         }
     }
 
