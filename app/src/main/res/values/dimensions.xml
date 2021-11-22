@@ -2,7 +2,7 @@
 <resources>
 
     <!-- For InpuTextLayouts -->
-    <dimen name="editTextHeight">50dp</dimen>
+    <dimen name="editTextHeight">55dp</dimen>
     <dimen name="editTextWidth">290dp</dimen>
 
     <!-- For those background white rectangles -->
