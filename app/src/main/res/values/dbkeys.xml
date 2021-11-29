@@ -30,5 +30,8 @@
     <string name="user_type">type</string>
     <string name="user_position">position</string>
 
+    <!-- Cloud Storage Bucket Names -->
+    <string name="storage_profile">gs://ccs6-b084d.appspot.com/images</string>
+
 
 </resources>

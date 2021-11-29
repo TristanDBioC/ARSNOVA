@@ -13,7 +13,12 @@ class LaunchActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_launch)
         var auth = Firebase.auth
-        auth.signOut()
+        //auth.signOut()
+        if (auth.currentUser != null) {
+            val intent = Intent(this, HomepageActivity::class.java)
+            startActivity(intent)
+            this.finish()
+        }
     }
 
     fun buttonSigninclick(view: View) {

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/HeaderID"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingStart="20dp"
+    android:paddingTop="20dp"
+    android:paddingBottom="20dp"
+    android:background="@color/teal_500">
+
+    <ImageView
+        android:id="@+id/NavHeaderPicture"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/rectangle_grey"
+        app:srcCompat="@mipmap/ic_launcher" />
+
+    <TextView
+        android:id="@+id/NavHeaderNameText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="First Name MI. Lastname"
+        android:textSize="15dp"
+        android:paddingTop="10dp"
+        android:textAllCaps="true"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/NavHeaderEmailText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="sample_email@domain.com" />
+
+
+</LinearLayout>

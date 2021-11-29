@@ -65,6 +65,7 @@ class SignInActivity : AppCompatActivity() {
                         .addOnSuccessListener { document ->
                             if (document.exists()) {
                                 Toast.makeText(this, "Proceed to homepage", Toast.LENGTH_SHORT).show()
+                                intent = Intent(this, HomepageActivity::class.java)
                             } else {
                                 intent = Intent(this, CreateProfileActivity::class.java)
                             }
