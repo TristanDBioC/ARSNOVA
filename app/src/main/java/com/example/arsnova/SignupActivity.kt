@@ -109,7 +109,7 @@ class SignupActivity : AppCompatActivity() {
                 findViewById<RelativeLayout>(R.id.loadingPanel).visibility = View.GONE
                 Toast.makeText(this, "Signup Failed", Toast.LENGTH_SHORT).show()
             }
-            findViewById<Button>(R.id.buttonSignup).isEnabled = true
+            findViewById<Button>(R.id.buttonRegister).isEnabled = true
 
         }
     }
@@ -117,7 +117,7 @@ class SignupActivity : AppCompatActivity() {
     fun buttonRegisteronClick(view: View) {
         val email: String = findViewById<EditText>(R.id.editTextEmail).text.toString()
         val password: String = findViewById<EditText>(R.id.editTextPassword).text.toString()
-        findViewById<Button>(R.id.buttonSignup).isEnabled = false
+        findViewById<Button>(R.id.buttonRegister).isEnabled = false
         findViewById<RelativeLayout>(R.id.loadingPanel).visibility = View.VISIBLE
         performAuth(email, password)
 

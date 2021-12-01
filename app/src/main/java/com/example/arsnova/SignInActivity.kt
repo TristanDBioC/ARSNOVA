@@ -64,7 +64,6 @@ class SignInActivity : AppCompatActivity() {
                     db.collection(getString(R.string.collection_users)).document(user.uid).get()
                         .addOnSuccessListener { document ->
                             if (document.exists()) {
-                                Toast.makeText(this, "Proceed to homepage", Toast.LENGTH_SHORT).show()
                                 intent = Intent(this, HomepageActivity::class.java)
                             } else {
                                 intent = Intent(this, CreateProfileActivity::class.java)

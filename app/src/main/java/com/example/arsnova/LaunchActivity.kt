@@ -12,8 +12,8 @@ class LaunchActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_launch)
+        println("firebase!")
         var auth = Firebase.auth
-        //auth.signOut()
         if (auth.currentUser != null) {
             val intent = Intent(this, HomepageActivity::class.java)
             startActivity(intent)

@@ -121,7 +121,11 @@ class CreateProfileActivity : AppCompatActivity() {
             getString(R.string.user_position) to ""
         )
         db.collection(getString(R.string.collection_users)).document(user.uid).set(newUser)
-            .addOnSuccessListener { Toast.makeText(this, "Profile successfully created", Toast.LENGTH_LONG).show() }
+            .addOnSuccessListener {
+                val intent = Intent(this, HomepageActivity::class.java)
+                startActivity(intent)
+                this.finish()
+            }
             .addOnFailureListener {Toast.makeText(this, "Failed", Toast.LENGTH_SHORT).show()}
             .addOnCompleteListener {
                 FirestoreUploadIsFinished = true
@@ -166,6 +170,9 @@ class CreateProfileActivity : AppCompatActivity() {
                     CloudUploadIsFinished = true
                     finishLoading()
                 }
+        } else {
+            CloudUploadIsFinished = true
+            finishLoading()
         }
 
     }
