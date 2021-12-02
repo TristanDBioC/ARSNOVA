@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".EditProfileFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="30dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/profileProfilePic"
+                android:layout_width="110dp"
+                android:layout_height="110dp"
+                android:layout_gravity="start"
+                android:src="@mipmap/ic_launcher"/>
+
+            <TextView
+                android:id="@+id/profileFullname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:text="Sample Name A. Name"
+                android:layout_gravity="center_vertical"
+                android:paddingStart="10dp" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/profileBio"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="I like cheese "
+            android:layout_gravity="top"
+            android:textSize="16sp"
+            android:paddingBottom="40dp"
+            android:paddingTop="30dp"/>
+
+        <TextView
+            android:id="@+id/profileLevelCourse"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Year Level and Course"/>
+
+        <TextView
+            android:id="@+id/profileEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="sample.email@email.com"/>
+
+        <Button
+            android:id="@+id/profileButtonEditProfile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Edit Profile"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Dashboard"
+                android:textColor="@color/muted_gray"
+                android:paddingTop="20dp"
+                android:paddingBottom="15dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="fill_horizontal"
+                android:padding="5dp"
+                android:clickable="true">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:src="@drawable/balance_and_status_icon"
+                    android:layout_gravity="center_vertical" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Balance and Status"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:layout_gravity="center_vertical"
+                    android:paddingStart="20dp"
+                    android:paddingEnd="20dp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="fill_horizontal"
+                android:padding="5dp"
+                android:clickable="true">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:src="@drawable/view_attendance_icon"
+                    android:layout_gravity="center_vertical"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:text="View Attendance Records"
+                    android:layout_gravity="center_vertical"
+                    android:paddingStart="20dp"
+                    android:paddingEnd="20dp"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="My Account"
+                android:textColor="@color/muted_gray"
+                android:paddingTop="20dp"
+                android:paddingBottom="15dp"/>
+
+            <TextView
+                android:id="@+id/ClickableLogout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Logout"
+                android:textColor="@color/teal_500"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
+</FrameLayout>

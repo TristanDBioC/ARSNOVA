@@ -1,4 +1,4 @@
-package com.example.arsnova
+package com.example.arsnova.viewmodels
 
 import android.net.Uri
 import androidx.lifecycle.LiveData

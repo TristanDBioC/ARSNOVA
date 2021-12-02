@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
+import com.example.arsnova.viewmodels.UserInfo
 import de.hdodenhof.circleimageview.CircleImageView
 
 // TODO: Rename parameter arguments, choose names that match
@@ -51,7 +52,7 @@ class HomepageFragment : Fragment() {
             view.findViewById<TextView>(R.id.homepageEmail)?.text = it.data?.getValue(getString(R.string.user_email)).toString()
 
         })
-                return view
+        return view
     }
 
 }

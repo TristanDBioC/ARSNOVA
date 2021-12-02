@@ -4,11 +4,106 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".EditProfileFragment">
-
-    <TextView
-        android:layout_width="wrap_content"
+    
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Edit Profile Fragment"
-        android:layout_gravity="center"/>
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="80dp"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/EditProfilePicture"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:clickable="true"
+                    android:src="@mipmap/ic_launcher" />
+
+                <ImageView
+                    android:layout_width="34dp"
+                    android:layout_height="34dp"
+                    android:layout_alignEnd="@id/EditProfilePicture"
+                    android:layout_alignBottom="@id/EditProfilePicture"
+                    android:src="@drawable/edit_pen" />
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/EditProfileFullName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="10dp"
+                tools:text="Student E. Name"
+                android:textStyle="bold"
+                android:textSize="22sp"/>
+
+            <TextView
+                android:id="@+id/EditProfileYearCourse"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="Course Year"
+                android:textSize="16sp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="30dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Bio"
+                android:textColor="@color/muted_gray"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:background="@drawable/rectangle_grey"
+                android:padding="5dp"
+                android:hint="Bio">
+
+                <EditText
+                    android:id="@+id/EditProfileEditTextBio"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="top"
+                    android:inputType="textMultiLine"
+                    tools:text="Sample bio text" />
+
+            </RelativeLayout>
+
+            <Button
+                android:id="@+id/EditProfileButtonSave"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Save Changes"
+                android:layout_gravity="end"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="20dp"
+                android:text="@string/edit_profile_contact_text"
+                android:textStyle="italic"/>
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
 
 </FrameLayout>

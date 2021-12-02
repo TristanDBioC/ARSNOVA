@@ -13,6 +13,7 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.net.toUri
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
+import com.example.arsnova.viewmodels.UserInfo
 import com.google.android.gms.tasks.Task
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.ktx.auth
@@ -48,7 +49,7 @@ class HomepageActivity : AppCompatActivity() {
             it.isChecked = true
             when(it.itemId) {
                 R.id.MenuHome -> replaceFragment(HomepageFragment(), "ARS Nova")
-                R.id.MenuEditProfile -> replaceFragment(EditProfileFragment(), "Edit Profile")
+                R.id.MenuEditProfile -> replaceFragment(ViewProfileFragment(), "Profile")
                 R.id.MenuLogout -> Logout()
             }
             true
@@ -62,7 +63,7 @@ class HomepageActivity : AppCompatActivity() {
         replaceFragment(HomepageFragment(), "ARS Nova")
     }
 
-    private fun initViewModel() {
+    fun initViewModel() {
         val gsRef = storage.getReferenceFromUrl("${getString(R.string.storage_profile)}/${user!!.uid}")
         val localFile = File.createTempFile("profile","")
         var counter = 0
@@ -92,7 +93,7 @@ class HomepageActivity : AppCompatActivity() {
 
     }
 
-    private fun replaceFragment(fragment : Fragment, title: String) {
+    fun replaceFragment(fragment : Fragment, title: String) {
         val fragmentManager = supportFragmentManager
         val fragmentTransaction = fragmentManager.beginTransaction()
         fragmentTransaction.replace(R.id.frameLayout, fragment)
