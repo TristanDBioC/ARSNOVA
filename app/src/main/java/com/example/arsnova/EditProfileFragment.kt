@@ -43,10 +43,15 @@ class EditProfileFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_edit_profile, container, false)
-        lateinit var imageUri: Uri
+        var profileUri: Uri? = null
+        val getContent = registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
+            if (uri != null) {
+                view.findViewById<ImageView>(R.id.EditProfilePicture).setImageURI(uri)
+                profileUri = uri
+            }
+        }
         viewModel.imageUri.observe(viewLifecycleOwner, Observer {
             view.findViewById<CircleImageView>(R.id.EditProfilePicture)?.setImageURI(it)
-            imageUri = it
         })
         viewModel.userDocument.observe(viewLifecycleOwner, Observer {
             val fname = it.data?.getValue(getString(R.string.user_firstname))
@@ -63,25 +68,49 @@ class EditProfileFragment : Fragment() {
 
         view.findViewById<Button>(R.id.EditProfileButtonSave)
             .setOnClickListener() {
+                it.isEnabled = false
                 val biotext: String = view.findViewById<EditText>(R.id.EditProfileEditTextBio)?.text.toString()
-                updateProfile(biotext)
+                updateProfile(biotext, profileUri)
+            }
+        view.findViewById<CircleImageView>(R.id.EditProfilePicture)
+            .setOnClickListener() {
+                getContent.launch("image/*")
             }
 
         return view
     }
 
 
-    private fun updateProfile(bio: String) {
+    private fun updateProfile(bio: String, uri : Uri?) {
+        var counter = 1
         db.collection(getString(R.string.collection_users)).document(user.uid)
             .update(getString(R.string.user_bio), bio)
-                .addOnFailureListener {
-                    Toast.makeText(activity, "profile update failed", Toast.LENGTH_SHORT).show()
+                .addOnCompleteListener() {
+                    counter += 1
+                    if (counter == 2) {
+                        (activity as HomepageActivity).initViewModel()
+                        (activity as HomepageActivity).replaceFragment(ViewProfileFragment(), "Profile")
+                    }
                 }
-                .addOnSuccessListener {
-                    Toast.makeText(activity, "profile updated", Toast.LENGTH_SHORT).show()
-                    (activity as HomepageActivity).initViewModel()
+        if (uri != null) {
+            val storage = Firebase.storage
+            val storageRef = storage.reference
+            val fileref = storageRef.child("images/${user.uid}")
+            fileref.putFile(uri)
+                .addOnCompleteListener() {
+                    counter += 1
+                    if (counter == 2) {
+                        (activity as HomepageActivity).initViewModel()
+                        (activity as HomepageActivity).replaceFragment(ViewProfileFragment(), "Profile")
+                    }
                 }
-
+        } else {
+            counter += 1
+            if (counter == 2) {
+                (activity as HomepageActivity).initViewModel()
+                (activity as HomepageActivity).replaceFragment(ViewProfileFragment(), "Profile")
+            }
+        }
     }
 
 

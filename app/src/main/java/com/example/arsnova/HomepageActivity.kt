@@ -54,14 +54,10 @@ class HomepageActivity : AppCompatActivity() {
             }
             true
         }
-    }
-
-    override fun onStart() {
-        super.onStart()
-
         UpdateNavigationUi()
         replaceFragment(HomepageFragment(), "ARS Nova")
     }
+
 
     fun initViewModel() {
         val gsRef = storage.getReferenceFromUrl("${getString(R.string.storage_profile)}/${user!!.uid}")

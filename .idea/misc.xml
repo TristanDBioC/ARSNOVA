@@ -6,6 +6,7 @@
         <entry key="..\:/Tristan/AndroidStudioProjects/ARSNOVA/app/src/main/res/drawable/circle.xml" value="0.22447916666666667" />
         <entry key="..\:/Tristan/AndroidStudioProjects/ARSNOVA/app/src/main/res/drawable/circle_mask.xml" value="0.175" />
         <entry key="..\:/Tristan/AndroidStudioProjects/ARSNOVA/app/src/main/res/drawable/circle_white.xml" value="0.2703125" />
+        <entry key="..\:/Tristan/AndroidStudioProjects/ARSNOVA/app/src/main/res/drawable/gradient_rectangle.xml" value="0.18229166666666666" />
         <entry key="..\:/Tristan/AndroidStudioProjects/ARSNOVA/app/src/main/res/drawable/grey_rectangle.xml" value="0.14635416666666667" />
         <entry key="..\:/Tristan/AndroidStudioProjects/ARSNOVA/app/src/main/res/drawable/ic_baseline_home_24.xml" value="0.12239583333333333" />
         <entry key="..\:/Tristan/AndroidStudioProjects/ARSNOVA/app/src/main/res/drawable/ic_baseline_login_24.xml" value="0.12239583333333333" />
@@ -17,14 +18,15 @@
         <entry key="..\:/Tristan/AndroidStudioProjects/ARSNOVA/app/src/main/res/drawable/white_rectangle.xml" value="0.2703125" />
         <entry key="..\:/Tristan/AndroidStudioProjects/ARSNOVA/app/src/main/res/layout/activity_create_profile.xml" value="0.2" />
         <entry key="..\:/Tristan/AndroidStudioProjects/ARSNOVA/app/src/main/res/layout/activity_homepage.xml" value="0.20833333333333334" />
-        <entry key="..\:/Tristan/AndroidStudioProjects/ARSNOVA/app/src/main/res/layout/activity_launch.xml" value="0.2" />
+        <entry key="..\:/Tristan/AndroidStudioProjects/ARSNOVA/app/src/main/res/layout/activity_launch.xml" value="0.4" />
         <entry key="..\:/Tristan/AndroidStudioProjects/ARSNOVA/app/src/main/res/layout/activity_main.xml" value="0.4" />
         <entry key="..\:/Tristan/AndroidStudioProjects/ARSNOVA/app/src/main/res/layout/activity_resetpassword.xml" value="0.264" />
         <entry key="..\:/Tristan/AndroidStudioProjects/ARSNOVA/app/src/main/res/layout/activity_signin.xml" value="0.264" />
         <entry key="..\:/Tristan/AndroidStudioProjects/ARSNOVA/app/src/main/res/layout/activity_signup.xml" value="0.264" />
         <entry key="..\:/Tristan/AndroidStudioProjects/ARSNOVA/app/src/main/res/layout/fragment_edit_profile.xml" value="0.264" />
         <entry key="..\:/Tristan/AndroidStudioProjects/ARSNOVA/app/src/main/res/layout/fragment_homepage.xml" value="0.264" />
-        <entry key="..\:/Tristan/AndroidStudioProjects/ARSNOVA/app/src/main/res/layout/fragment_view_profile.xml" value="0.4" />
+        <entry key="..\:/Tristan/AndroidStudioProjects/ARSNOVA/app/src/main/res/layout/fragment_status_balance.xml" value="0.2" />
+        <entry key="..\:/Tristan/AndroidStudioProjects/ARSNOVA/app/src/main/res/layout/fragment_view_profile.xml" value="0.264" />
         <entry key="..\:/Tristan/AndroidStudioProjects/ARSNOVA/app/src/main/res/layout/nav_header.xml" value="0.264" />
         <entry key="..\:/Tristan/AndroidStudioProjects/ARSNOVA/app/src/main/res/layout/spinner_item.xml" value="0.15208333333333332" />
         <entry key="..\:/Tristan/AndroidStudioProjects/ARSNOVA/app/src/main/res/menu/nav_menu.xml" value="0.2" />

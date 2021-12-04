@@ -118,7 +118,8 @@ class CreateProfileActivity : AppCompatActivity() {
             getString(R.string.user_fines) to 0.0,
             getString(R.string.user_incentives) to 0.0,
             getString(R.string.user_type) to "regular",
-            getString(R.string.user_position) to ""
+            getString(R.string.user_position) to "",
+            getString(R.string.user_summary) to false
         )
         db.collection(getString(R.string.collection_users)).document(user.uid).set(newUser)
             .addOnSuccessListener {

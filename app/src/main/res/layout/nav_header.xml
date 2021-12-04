@@ -15,23 +15,26 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:scaleType="centerCrop"
-        android:src="@mipmap/ic_launcher" />
+        android:src="@drawable/default_profile" />
 
     <TextView
         android:id="@+id/NavHeaderNameText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="First Name MI. Lastname"
-        android:textSize="15dp"
+        android:textSize="18sp"
         android:paddingTop="10dp"
         android:textAllCaps="true"
-        android:textStyle="bold"/>
+        android:textStyle="bold"
+        android:textColor="@color/black"/>
 
     <TextView
         android:id="@+id/NavHeaderEmailText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="sample_email@domain.com" />
+        android:textSize="15sp"
+        android:text="sample_email@domain.com"
+        android:textColor="@color/black"/>
 
 
 </LinearLayout>
