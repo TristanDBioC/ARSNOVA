@@ -67,7 +67,6 @@ class ViewProfileFragment : Fragment() {
                 startActivity(intent)
                 activity?.finish()
             }
-
         view.findViewById<Button>(R.id.profileButtonEditProfile)
             .setOnClickListener() {
                 (activity as HomepageActivity)!!.replaceFragment(EditProfileFragment(), "Balance and Status")
@@ -77,7 +76,6 @@ class ViewProfileFragment : Fragment() {
             .setOnClickListener() {
                 (activity as HomepageActivity)!!.replaceFragment(StatusBalanceFragment(), "Balance and Status")
             }
-
         return view
     }
 

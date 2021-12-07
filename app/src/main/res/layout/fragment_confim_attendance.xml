@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ConfimAttendanceFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="30dp">
+
+        <TextView
+            android:id="@+id/ConfirmEventName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Sample Event name"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/ConfirmEventDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Event date"/>
+
+        <TextView
+            android:id="@+id/ConfirmEventLocation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Event Location"/>
+
+        <TextView
+            android:id="@+id/ConfirmEventTimeStart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="TimeStart"/>
+
+        <TextView
+            android:id="@+id/ConfirmEventTimeEnd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="TimeEnd"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/ConfirmEventStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="Attendance Status: "/>
+
+
+        </LinearLayout>
+
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingTop="40dp">
+
+            <Button
+                android:id="@+id/ConfirmEventButtonConfirm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Confirm"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/ConfirmEventButtonCancel"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <Button
+                android:id="@+id/ConfirmEventButtonCancel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/muted_gray"
+                android:text="Cancel"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/ConfirmEventButtonConfirm"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </LinearLayout>
+
+</FrameLayout>

@@ -1,14 +1,19 @@
 package com.example.arsnova
 
+import android.content.pm.PackageManager
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import android.widget.TextView
+import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import com.example.arsnova.viewmodels.UserInfo
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import de.hdodenhof.circleimageview.CircleImageView
 
 // TODO: Rename parameter arguments, choose names that match
@@ -22,7 +27,6 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  */
 class HomepageFragment : Fragment() {
-    // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
     private val viewModel : UserInfo by activityViewModels()
@@ -50,8 +54,11 @@ class HomepageFragment : Fragment() {
             view.findViewById<TextView>(R.id.homepageHiFname)?.text = "Hi ${it.data?.getValue(getString(R.string.user_firstname)).toString()}!"
             view.findViewById<TextView>(R.id.homepageFullname)?.text = "$fname $mi. $lname"
             view.findViewById<TextView>(R.id.homepageEmail)?.text = it.data?.getValue(getString(R.string.user_email)).toString()
-
         })
+        view.findViewById<FloatingActionButton>(R.id.ButtonCodeScanner)
+            .setOnClickListener() {
+                (activity as HomepageActivity)!!.replaceFragment(ScannerFragment(), "Scan Attendance QR")
+            }
         return view
     }
 

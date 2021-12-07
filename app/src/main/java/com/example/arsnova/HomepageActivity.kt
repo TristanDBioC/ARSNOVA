@@ -1,6 +1,7 @@
 package com.example.arsnova
 
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.media.Image
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
@@ -10,6 +11,8 @@ import android.view.View
 import android.widget.*
 import androidx.activity.viewModels
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.core.net.toUri
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
@@ -156,5 +159,31 @@ class HomepageActivity : AppCompatActivity() {
         }
     }
 
+    fun setupPermissions() {
+        val permission = ContextCompat.checkSelfPermission(this, android.Manifest.permission.CAMERA)
+
+        if (permission != PackageManager.PERMISSION_GRANTED) {
+            makeCameraPermissionRequest()
+        }
+    }
+
+    fun makeCameraPermissionRequest() {
+        ActivityCompat.requestPermissions(this, arrayOf(android.Manifest.permission.CAMERA), 101)
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        when (requestCode) {
+            101 -> {
+                if (grantResults.isEmpty() || grantResults[0] != PackageManager.PERMISSION_GRANTED) {
+                    Toast.makeText(this, "This app needs camera permissions to work", Toast.LENGTH_LONG).show()
+                }
+            }
+        }
+    }
 
 }

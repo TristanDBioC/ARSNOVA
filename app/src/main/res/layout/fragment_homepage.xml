@@ -7,9 +7,9 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="30dp"
-        android:orientation="vertical">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="30dp">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -22,14 +22,14 @@
                 android:layout_width="110dp"
                 android:layout_height="110dp"
                 android:layout_gravity="start"
-                android:src="@drawable/default_profile"/>
+                android:src="@drawable/default_profile" />
 
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
                 android:layout_gravity="center_vertical"
+                android:orientation="vertical"
                 android:paddingStart="10dp"
                 android:paddingEnd="0dp">
 
@@ -37,16 +37,16 @@
                     android:id="@+id/homepageFullname"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:text="Sample Name A. Name"
                     android:textSize="16sp"
-                    android:textStyle="bold"
-                    android:text="Sample Name A. Name" />
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/homepageEmail"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="16sp"
-                    android:text="sameplename@email.com" />
+                    android:text="sameplename@email.com"
+                    android:textSize="16sp" />
 
             </LinearLayout>
 
@@ -65,10 +65,23 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/todays_activiies"
-            android:textSize="20dp"
-            android:textColor="@color/teal_500" />
+            android:textColor="@color/teal_500"
+            android:textSize="20dp" />
 
 
     </LinearLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/ButtonCodeScanner"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:background="@color/dark_gray"
+        android:layout_gravity="end|bottom"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="30dp"
+        android:src="@drawable/ic_baseline_camera_24"
+        android:tint="@color/black"/>
+
+
 
 </FrameLayout>

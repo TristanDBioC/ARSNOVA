@@ -9,8 +9,10 @@ import com.google.firebase.firestore.DocumentSnapshot
 class UserInfo : ViewModel(){
     private val mutableImageUri = MutableLiveData<Uri>()
     private val mutableUserDocument = MutableLiveData<DocumentSnapshot>()
+    private val mutableEventDocument = MutableLiveData<DocumentSnapshot>()
     val imageUri : LiveData<Uri> get() = mutableImageUri
     val userDocument : LiveData<DocumentSnapshot> get() = mutableUserDocument
+    val eventDocument : LiveData<DocumentSnapshot> get() = mutableEventDocument
 
     fun setUri(uri: Uri) {
         mutableImageUri.value = uri
@@ -20,11 +22,19 @@ class UserInfo : ViewModel(){
         mutableUserDocument.value = document
     }
 
+    fun setEvent(document: DocumentSnapshot) {
+        mutableEventDocument.value = document
+    }
+
     fun getDocument() : DocumentSnapshot? {
         return userDocument.value
     }
 
     fun getImageUri() : Uri? {
         return mutableImageUri.value
+    }
+
+    fun getEvent() : DocumentSnapshot? {
+        return mutableEventDocument.value
     }
 }

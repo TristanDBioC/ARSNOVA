@@ -4,6 +4,8 @@
     <string name="collection_courses">course</string>
     <string name="collection_yearLevel">year_level</string>
     <string name="collection_users">user</string>
+    <string name="collection_events">event</string>
+    <string name="collection_attendance">attendance</string>
 
     <!-- COURSES COLLECTION -->
     <string name="course_name">name</string>
@@ -29,6 +31,22 @@
     <string name="user_incentives">incentives</string>
     <string name="user_type">type</string>
     <string name="user_position">position</string>
+
+    <!-- EVENT COLLECTION -->
+    <string name="event_name">name</string>
+    <string name="event_availability">availability</string>
+    <string name="event_date">date</string>
+    <string name="event_fines">fine</string>
+    <string name="event_location">location</string>
+    <string name="event_qrcode">qrcode</string>
+    <string name="event_timeEnd">time_end</string>
+    <string name="event_timeStart">time_start</string>
+    <string name="event_type">type</string>
+
+    <!-- ATTENDANCE COLLECTION -->
+    <string name="attendance_eventId">event_id</string>
+    <string name="attendance_userID">uid</string>
+    <string name="attendance_timestamp">timestamp</string>
 
     <!-- Cloud Storage Bucket Names -->
     <string name="storage_profile">gs://ccs6-b084d.appspot.com/images</string>
