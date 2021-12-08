@@ -7,18 +7,17 @@ import android.net.Uri
 import android.os.Bundle
 import android.print.PrintAttributes
 import android.util.TypedValue
+import android.view.Gravity
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
-import android.widget.ScrollView
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat.getColor
 import androidx.core.view.marginBottom
+import androidx.core.view.setMargins
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import com.example.arsnova.viewmodels.UserInfo
@@ -53,6 +52,7 @@ class HomepageFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_homepage, container, false)
+        (activity as HomepageActivity)!!.initViewModel()
         viewModel.imageUri.observe(viewLifecycleOwner, Observer {
             view.findViewById<CircleImageView>(R.id.homepagePicture)?.setImageURI(it)
         })
@@ -85,7 +85,7 @@ class HomepageFragment : Fragment() {
             LinearLayout.LayoutParams.MATCH_PARENT,
             LinearLayout.LayoutParams.WRAP_CONTENT
         )
-        layoutparams.setMargins(0, 0, 0, 10)
+        layoutparams.setMargins(0,0,0,10)
         MainCard.layoutParams = layoutparams
 
         // Linear Layout to contain elements
@@ -110,10 +110,14 @@ class HomepageFragment : Fragment() {
 
         // Icon for Attendance Status
         val AttendanceIcon = CircleImageView(activity)
-        AttendanceIcon.layoutParams = LinearLayout.LayoutParams(
-            10,
-            10,
+        val AttendanceIconLayout = RelativeLayout.LayoutParams(
+            100,
+            100
         )
+        AttendanceIconLayout.addRule(RelativeLayout.CENTER_VERTICAL)
+        AttendanceIconLayout.addRule(RelativeLayout.ALIGN_PARENT_END)
+        AttendanceIconLayout.setMargins(0,0,50,0)
+        AttendanceIcon.layoutParams = AttendanceIconLayout
 
 
         // TextView for Attendance Status
@@ -128,11 +132,23 @@ class HomepageFragment : Fragment() {
             AttendanceIcon.setImageURI(uri)
         }
 
+        // Relative Layout to Contain All
+        val relativeLayout = RelativeLayout(activity)
+        val relativelayoutparams  = RelativeLayout.LayoutParams(
+            LinearLayout.LayoutParams.MATCH_PARENT,
+            LinearLayout.LayoutParams.WRAP_CONTENT
+        )
+        relativelayoutparams.setMargins(0, 0,0,10)
+
+        relativeLayout.layoutParams = relativelayoutparams
+
         linearlayout.addView(eventNameTextView)
         linearlayout.addView(DateTimeTextView)
         linearlayout.addView(AttendanceTextView)
-        MainCard.addView(linearlayout)
-        MainCard.addView(AttendanceIcon)
+        relativeLayout.addView(linearlayout)
+        relativeLayout.addView(AttendanceIcon)
+        MainCard.addView(relativeLayout)
+
         return MainCard
     }
 

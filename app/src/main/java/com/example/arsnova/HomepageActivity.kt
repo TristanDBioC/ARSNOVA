@@ -54,6 +54,8 @@ class HomepageActivity : AppCompatActivity() {
             when(it.itemId) {
                 R.id.MenuHome -> replaceFragment(HomepageFragment(), "ARS Nova")
                 R.id.MenuEditProfile -> replaceFragment(ViewProfileFragment(), "Profile")
+                R.id.MenuStatusBalance -> replaceFragment(StatusBalanceFragment(), "Balance and Status")
+                R.id.MenuAttendance -> replaceFragment(ViewAttendanceFragment(), "Attendance Records")
                 R.id.MenuLogout -> Logout()
             }
             true
