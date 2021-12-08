@@ -76,6 +76,10 @@ class ViewProfileFragment : Fragment() {
             .setOnClickListener() {
                 (activity as HomepageActivity)!!.replaceFragment(StatusBalanceFragment(), "Balance and Status")
             }
+        view.findViewById<LinearLayout>(R.id.AttendanceRecordsHyperlink)
+            .setOnClickListener() {
+                (activity as HomepageActivity)!!.replaceFragment(ViewAttendanceFragment(), "Attendance Records")
+            }
         return view
     }
 

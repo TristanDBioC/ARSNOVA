@@ -48,6 +48,7 @@ class HomepageActivity : AppCompatActivity() {
         drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setDisplayShowHomeEnabled(true)
         navView.setNavigationItemSelectedListener {
             it.isChecked = true
             when(it.itemId) {

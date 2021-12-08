@@ -12,18 +12,15 @@ import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.Observer
 import com.example.arsnova.viewmodels.UserInfo
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-import de.hdodenhof.circleimageview.CircleImageView
-import org.w3c.dom.Text
 
+// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
-
-class StatusBalanceFragment : Fragment() {
+class ViewAttendanceFragment : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
     private val auth = Firebase.auth
@@ -32,7 +29,6 @@ class StatusBalanceFragment : Fragment() {
     private val viewModel : UserInfo by activityViewModels()
 
     private val eventIdList = mutableListOf<String>()
-    private var totalFines: Float = 0.toFloat()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,42 +42,17 @@ class StatusBalanceFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_status_balance, container, false)
-        viewModel.imageUri.observe(viewLifecycleOwner, Observer {
-            view.findViewById<CircleImageView>(R.id.BalanceProfile)?.setImageURI(it)
-        })
-        viewModel.userDocument.observe(viewLifecycleOwner, Observer {
-            val fines = it.data?.getValue(getString(R.string.user_fines)).toString().toFloat()
-            val status = it.data?.getValue(getString(R.string.user_summary)).toString().toBoolean()
-            val incentive = it.data?.getValue(getString(R.string.user_incentives)).toString().toFloat()
-            val netBalance = fines-incentive
+        // Inflate the layout for this fragment
+        val view =  inflater.inflate(R.layout.fragment_view_attendance, container, false)
 
-            view?.findViewById<TextView>(R.id.NetBalanceTextView)?.text = String.format("%s %.2f",getString(R.string.curency), netBalance)
-            view?.findViewById<TextView>(R.id.TotalFinesTextView)?.text = String.format("%s %.2f",getString(R.string.curency), fines)
-            view?.findViewById<TextView>(R.id.IncentivesTextView)?.text = String.format("%s %.2f",getString(R.string.curency), incentive)
-            if (status) {
-                view?.findViewById<TextView>(R.id.ClearanceStatusTextView)?.text = "CLEARED"
-            } else {
-                view?.findViewById<TextView>(R.id.ClearanceStatusTextView)?.text = "NOT CLEARED"
-            }
 
-        })
         eventIdList.clear()
         eventIdList.add("aaa")
-        totalFines = 0.toFloat()
-
-        populateScrollview(view.findViewById(R.id.statusBalanceScrollView))
-
+        populateScrollview(view.findViewById(R.id.ViewAttendanceScrollView))
         return view
     }
 
-    private fun createEventCard(
-        name: String,
-        date: String,
-        start:String,
-        end: String,
-        penalty: Float
-    ): CardView {
+    private fun createEventCard(name: String, date: String, start: String, end: String, marked: Boolean): CardView {
         // Main Card View
         val MainCard = CardView(requireActivity())
         MainCard.id = View.generateViewId()
@@ -115,17 +86,21 @@ class StatusBalanceFragment : Fragment() {
         DateTimeTextView.text = ("%s | %s to %s".format(date, start, end))
 
 
-
-        // TextView for Penalty Incurred
-        val FinePenalty = TextView(activity)
-        FinePenalty.text = ("%s %.2f".format(getString(R.string.curency), penalty))
+        // TextView for Attendance Status
+        val AttendanceTextView = TextView(activity)
+        if (marked) {
+            AttendanceTextView.text = ("Attendance is marked as present")
+        } else {
+            AttendanceTextView.text = ("Attendance is not marked as present")
+        }
 
         linearlayout.addView(eventNameTextView)
         linearlayout.addView(DateTimeTextView)
-        linearlayout.addView(FinePenalty)
+        linearlayout.addView(AttendanceTextView)
         MainCard.addView(linearlayout)
         return MainCard
     }
+
 
     private fun populateScrollview(view: LinearLayout) {
         db.collection(getString(R.string.collection_attendance))
@@ -140,32 +115,21 @@ class StatusBalanceFragment : Fragment() {
             }
             .addOnCompleteListener() {
                 db.collection(getString(R.string.collection_events))
-                    .whereNotIn(getString(R.string.event_qrcode), eventIdList)
                     .get()
-                    .addOnSuccessListener { documents ->
+                    .addOnSuccessListener {  documents ->
                         for (document in documents) {
                             val name = document.data.getValue(getString(R.string.event_name)).toString()
                             val date = document.data.getValue(getString(R.string.event_date)).toString()
                             val start = document.data.getValue(getString(R.string.event_timeStart)).toString()
                             val end = document.data.getValue(getString(R.string.event_timeEnd)).toString()
-                            val penalty: Float = document.data.getValue(getString(R.string.event_fines)).toString().toFloat()
-                            totalFines += penalty
-                            view.addView(createEventCard(name, date, start, end, penalty ))
+                            val id = document.data.getValue(getString(R.string.event_qrcode)).toString()
+                            val attendance = (id in eventIdList)
+                            view.addView(createEventCard(name, date, start, end, attendance))
                         }
                     }
-                    .addOnCompleteListener() {
-                        db.collection(getString(R.string.collection_users)).document(user!!.uid)
-                            .update(getString(R.string.user_fines), totalFines)
-                        (activity as HomepageActivity).initViewModel()
-                    }
-
             }
 
     }
 
-    fun updateUserFines(balance: Float) {
-        db.collection(getString(R.string.collection_users)).document(user!!.uid)
-            .update(getString(R.string.user_fines), balance)
-    }
 
 }
