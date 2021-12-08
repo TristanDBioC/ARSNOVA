@@ -33,6 +33,7 @@ class StatusBalanceFragment : Fragment() {
 
     private val eventIdList = mutableListOf<String>()
     private var totalFines: Float = 0.toFloat()
+    private var incentive: Float = 0.toFloat()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,7 +54,7 @@ class StatusBalanceFragment : Fragment() {
         viewModel.userDocument.observe(viewLifecycleOwner, Observer {
             val fines = it.data?.getValue(getString(R.string.user_fines)).toString().toFloat()
             val status = it.data?.getValue(getString(R.string.user_summary)).toString().toBoolean()
-            val incentive = it.data?.getValue(getString(R.string.user_incentives)).toString().toFloat()
+            incentive = it.data?.getValue(getString(R.string.user_incentives)).toString().toFloat()
             val netBalance = fines-incentive
 
             view?.findViewById<TextView>(R.id.NetBalanceTextView)?.text = String.format("%s %.2f",getString(R.string.curency), netBalance)
@@ -155,8 +156,12 @@ class StatusBalanceFragment : Fragment() {
                     }
                     .addOnCompleteListener() {
                         db.collection(getString(R.string.collection_users)).document(user!!.uid)
-                            .update(getString(R.string.user_fines), totalFines)
+                            .update(mapOf(
+                                getString(R.string.user_fines) to totalFines,
+                                getString(R.string.user_summary) to (incentive - totalFines >= 0)
+                            ))
                         (activity as HomepageActivity).initViewModel()
+
                     }
 
             }

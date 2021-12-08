@@ -99,6 +99,7 @@ class ConfimAttendanceFragment : Fragment() {
                         .add(data)
                         .addOnCompleteListener() {
                             Toast.makeText(requireActivity(), "Attendance Recorded", Toast.LENGTH_SHORT).show()
+                            (activity as HomepageActivity)!!.replaceFragment(HomepageFragment(), "ARS Nova")
                         }
                 } else {
                     for (document in documents) {
@@ -108,12 +109,10 @@ class ConfimAttendanceFragment : Fragment() {
                             )
                             .addOnCompleteListener() {
                                 Toast.makeText(requireActivity(), "Attendance Updated", Toast.LENGTH_SHORT).show()
+                                (activity as HomepageActivity)!!.replaceFragment(HomepageFragment(), "ARS Nova")
                             }
                     }
                 }
-            }
-            .addOnCompleteListener() {
-                (activity as HomepageActivity)!!.replaceFragment(HomepageFragment(), "ARS Nova")
             }
 
     }

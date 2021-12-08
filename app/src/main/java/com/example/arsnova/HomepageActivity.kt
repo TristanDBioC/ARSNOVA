@@ -69,17 +69,15 @@ class HomepageActivity : AppCompatActivity() {
         var counter = 0
         findViewById<RelativeLayout>(R.id.loadingPanel).visibility = View.VISIBLE
         gsRef.getFile(localFile)
-            .addOnSuccessListener() {
-                viewModel.setUri(localFile.toUri())
-            }
-            .addOnFailureListener() {
-                Toast.makeText(this, "Device is offline", Toast.LENGTH_LONG).show()
-            }
             .addOnCompleteListener() {
+                viewModel.setUri(localFile.toUri())
                 counter += 1
                 if (counter == 2) {
                     findViewById<RelativeLayout>(R.id.loadingPanel).visibility = View.GONE
                 }
+            }
+            .addOnFailureListener() {
+                Toast.makeText(this, "Device is offline", Toast.LENGTH_LONG).show()
             }
         db.collection(getString(R.string.collection_users)).document(user!!.uid).get()
             .addOnSuccessListener { result ->

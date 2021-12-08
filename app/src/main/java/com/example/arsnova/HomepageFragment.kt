@@ -1,7 +1,9 @@
 package com.example.arsnova
 
+import android.content.ContentResolver
 import android.content.pm.PackageManager
 import android.graphics.Typeface
+import android.net.Uri
 import android.os.Bundle
 import android.print.PrintAttributes
 import android.util.TypedValue
@@ -36,6 +38,8 @@ class HomepageFragment : Fragment() {
     private val auth = Firebase.auth
     private val db = Firebase.firestore
 
+    private val eventIdList = mutableListOf<String>()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -65,6 +69,8 @@ class HomepageFragment : Fragment() {
                 (activity as HomepageActivity)!!.replaceFragment(ScannerFragment(), "Scan Attendance QR")
             }
 
+        eventIdList.clear()
+        eventIdList.add("aaa")
         populateScrollview(view.findViewById(R.id.homepageScrollView))
         return view
     }
@@ -102,49 +108,63 @@ class HomepageFragment : Fragment() {
         val DateTimeTextView = TextView(activity)
         DateTimeTextView.text = ("%s | %s to %s".format(date, start, end))
 
+        // Icon for Attendance Status
+        val AttendanceIcon = CircleImageView(activity)
+        AttendanceIcon.layoutParams = LinearLayout.LayoutParams(
+            10,
+            10,
+        )
+
 
         // TextView for Attendance Status
         val AttendanceTextView = TextView(activity)
         if (marked) {
+            val uri = Uri.parse("android.resource://com.example.arsnova/drawable/check")
             AttendanceTextView.text = ("Attendance is marked as present")
+            AttendanceIcon.setImageURI(uri)
         } else {
+            val uri = Uri.parse("android.resource://com.example.arsnova/drawable/x_mark")
             AttendanceTextView.text = ("Attendance is not marked as present")
+            AttendanceIcon.setImageURI(uri)
         }
 
         linearlayout.addView(eventNameTextView)
         linearlayout.addView(DateTimeTextView)
         linearlayout.addView(AttendanceTextView)
         MainCard.addView(linearlayout)
+        MainCard.addView(AttendanceIcon)
         return MainCard
     }
 
     private fun populateScrollview(view: LinearLayout) {
-        db.collection(getString(R.string.collection_events))
-            .whereEqualTo(getString(R.string.event_availability), true)
+        db.collection(getString(R.string.collection_attendance))
+            .whereEqualTo(getString(R.string.attendance_userID), auth.currentUser!!.uid)
             .get()
             .addOnSuccessListener { documents ->
                 for (document in documents) {
-                    val name = document.data.getValue(getString(R.string.event_name)).toString()
-                    val date = document.data.getValue(getString(R.string.event_date)).toString()
-                    val start = document.data.getValue(getString(R.string.event_timeStart)).toString()
-                    val end = document.data.getValue(getString(R.string.event_timeEnd)).toString()
-                    val eventId = document.data.getValue(getString(R.string.event_qrcode)).toString()
-                    val marked = checkIfPresent(auth.currentUser!!.uid, eventId)
-                    view.addView(createEventCard(name, date, start, end, marked))
+                    val id = document.data.getValue(getString(R.string.attendance_eventId)).toString()
+                    eventIdList.add(id)
                 }
+
             }
+            .addOnCompleteListener() {
+                db.collection(getString(R.string.collection_events))
+                    .whereEqualTo(getString(R.string.event_availability), true)
+                    .get()
+                    .addOnSuccessListener { documents ->
+                        for (document in documents) {
+                            val name = document.data.getValue(getString(R.string.event_name)).toString()
+                            val date = document.data.getValue(getString(R.string.event_date)).toString()
+                            val start = document.data.getValue(getString(R.string.event_timeStart)).toString()
+                            val end = document.data.getValue(getString(R.string.event_timeEnd)).toString()
+                            val eventId = document.data.getValue(getString(R.string.event_qrcode)).toString()
+                            val attendance = (eventId in eventIdList)
+                            view.addView(createEventCard(name, date, start, end, attendance))
+                        }
+                    }
+            }
+
     }
 
-    private fun checkIfPresent(uid: String, eventID: String): Boolean {
-        var returnValue = false
-        db.collection(getString(R.string.collection_attendance))
-            .whereEqualTo(getString(R.string.attendance_userID), uid)
-            .whereEqualTo(getString(R.string.attendance_eventId), eventID)
-            .get()
-            .addOnSuccessListener {
-                returnValue = !it.isEmpty
-            }
 
-        return returnValue
-    }
 }
