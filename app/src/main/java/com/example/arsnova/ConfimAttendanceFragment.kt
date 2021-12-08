@@ -89,11 +89,6 @@ class ConfimAttendanceFragment : Fragment() {
 
         val attendanceRef = db.collection(getString(R.string.collection_attendance))
 
-        val record = attendanceRef
-            .whereEqualTo(getString(R.string.attendance_userID), uid)
-            .whereEqualTo(getString(R.string.attendance_eventId), eventID)
-            .get()
-
         db.collection(getString(R.string.collection_attendance))
             .whereEqualTo(getString(R.string.attendance_userID), uid)
             .whereEqualTo(getString(R.string.attendance_eventId), eventID)
@@ -116,6 +111,9 @@ class ConfimAttendanceFragment : Fragment() {
                             }
                     }
                 }
+            }
+            .addOnCompleteListener() {
+                (activity as HomepageActivity)!!.replaceFragment(HomepageFragment(), "ARS Nova")
             }
 
     }

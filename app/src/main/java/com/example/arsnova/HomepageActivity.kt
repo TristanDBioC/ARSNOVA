@@ -68,8 +68,13 @@ class HomepageActivity : AppCompatActivity() {
         var counter = 0
         findViewById<RelativeLayout>(R.id.loadingPanel).visibility = View.VISIBLE
         gsRef.getFile(localFile)
-            .addOnCompleteListener() {
+            .addOnSuccessListener() {
                 viewModel.setUri(localFile.toUri())
+            }
+            .addOnFailureListener() {
+                Toast.makeText(this, "Device is offline", Toast.LENGTH_LONG).show()
+            }
+            .addOnCompleteListener() {
                 counter += 1
                 if (counter == 2) {
                     findViewById<RelativeLayout>(R.id.loadingPanel).visibility = View.GONE

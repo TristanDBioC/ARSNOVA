@@ -130,7 +130,6 @@ class HomepageFragment : Fragment() {
                     val end = document.data.getValue(getString(R.string.event_timeEnd)).toString()
                     val eventId = document.data.getValue(getString(R.string.event_qrcode)).toString()
                     val marked = checkIfPresent(auth.currentUser!!.uid, eventId)
-                    println(name)
                     view.addView(createEventCard(name, date, start, end, marked))
                 }
             }
