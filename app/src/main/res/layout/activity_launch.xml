@@ -11,15 +11,14 @@
 
     <View
         android:id="@+id/view"
-        android:layout_width="322dp"
-        android:layout_height="311dp"
+        android:layout_width="319dp"
+        android:layout_height="249dp"
         android:background="@drawable/rectangle_white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.673" />
+        app:layout_constraintVertical_bias="0.558" />
 
     <Button
         android:id="@+id/buttonSignin"
@@ -29,25 +28,10 @@
         android:text="Sign in"
         app:layout_constraintBottom_toBottomOf="@+id/view"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/view"
-        app:layout_constraintVertical_bias="0.164"
+        app:layout_constraintVertical_bias="0.324"
         app:strokeWidth="1px" />
-
-    <ImageButton
-        android:id="@+id/imageButtonGoogleSIgnIn2"
-        android:layout_width="75dp"
-        android:layout_height="75dp"
-        android:background="@null"
-        android:contentDescription="Google Sign up"
-        app:layout_constraintBottom_toBottomOf="@+id/view"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4"
-        app:layout_constraintVertical_bias="0.433"
-        app:srcCompat="@mipmap/ic_google" />
 
     <Button
         android:id="@+id/buttonSignup"
@@ -60,26 +44,11 @@
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         app:layout_constraintBottom_toBottomOf="@+id/view"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/view"
-        app:layout_constraintVertical_bias="0.437"
+        app:layout_constraintVertical_bias="0.609"
         app:strokeColor="@color/teal_500"
         app:strokeWidth="2dp" />
-
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="116dp"
-        android:layout_height="24dp"
-        android:text="or sign up using"
-        android:textAlignment="center"
-        android:textColor="@color/teal_500"
-        app:layout_constraintBottom_toBottomOf="@+id/view"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/view"
-        app:layout_constraintVertical_bias="0.634" />
 
     <TextView
         android:id="@+id/textTitle"

@@ -61,32 +61,6 @@
         app:layout_constraintVertical_bias="0.0"
         tools:ignore="TouchTargetSizeCheck" />
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="or sign in using"
-        android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view"
-        app:layout_constraintVertical_bias="0.096" />
-
-    <ImageButton
-        android:id="@+id/imageButtonGoogleSIgnIn"
-        android:layout_width="75dp"
-        android:layout_height="75dp"
-        android:background="@null"
-        android:contentDescription="Google sign in"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3"
-        app:layout_constraintVertical_bias="0.186"
-        app:srcCompat="@mipmap/ic_google" />
-
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout3"
         android:layout_width="@dimen/editTextWidth"
@@ -109,7 +83,6 @@
             android:layout_height="match_parent"
             android:background="@drawable/rectangle_grey"
             android:inputType="textPassword"
-            android:text="eefggfedccdeedd"
             tools:visibility="gone" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -130,7 +103,6 @@
             android:layout_height="match_parent"
             android:background="@drawable/rectangle_grey"
             android:inputType="textEmailAddress"
-            android:text="tristanodavid@su.edu.ph"
             tools:visibility="gone" />
     </com.google.android.material.textfield.TextInputLayout>
 
